@@ -1,6 +1,5 @@
 welcomemessage = "Select a difficulty for the fill-in-the-blank quiz you are about to play!"
 
-
 easydiff = "The movie __1__ is a war movie directed by __2__ Nolan about the __3__ and French armies stranded on the __4__ of Dunkirk while the __5__ army closed in on them."
 easyanswers = ["Dunkirk", "Christopher", "British", "beach", "German"]
 
@@ -34,26 +33,26 @@ print welcomemessage
 #    print "Fill in the blanks with the correct answer."
 #    print "Capitlization counts!"
 
-def blank_in_quiz(quiz, blanks):
+def blank_in_quiz(blank, blanks):
     for blank in blanks:
         if blank in quiz:
             return blank
     return None
 
-#def play_game(ml_string, blanks):
-#    replaced = []
-#    ml_string = ml_string.split()
-#    for word in ml_string:
-#        replacement = blank_in_quiz(quiz, blanks)
-#        if replacement != None:
-#            user_input = raw_input("Type in a answer for blank: " + replacement + " ")
-#            word = word.replace(replacement, user_input)
-#            replaced.append(word)
-#        elif replacement == allanswers:
-#            print "Correct!"
-#        else:
-#            replaced.append(word)
-#    replaced = " ".join(replaced)
-#    return replaced
+def play_game(ml_string, blanks):
+    replaced = []
+    ml_string = ml_string.split()
+    for word in ml_string:
+        replacement = blank_in_quiz(blank, blanks)
+        if replacement != None:
+            user_input = raw_input("Type in a answer for blank: " + replacement + " ")
+            blank = blank.replace(replacement, user_input)
+            replaced.append(word)
+        elif replacement == allanswers:
+            print "Correct!"
+        else:
+            replaced.append(word)
+    replaced = " ".join(replaced)
+    return replaced
 
-print blank_in_quiz(easydiff, blanks)
+print play_game(easydiff, blanks)
