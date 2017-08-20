@@ -15,17 +15,6 @@ blanks = ["__1__", "__2__", "__3__", "__4__", "__5__"]
 
 print welcomemessage
 
-#def selectdiff():
-#    userinput = raw_input("Type easy, medium, or hard")
-#    if userinput == "easy":
-#        easy()
-#    elif userinput == "medium":
-#        medium()
-#    elif userinput == "hard":
-#        hard()
-#    else:
-#        print "That is not a valid difficulty."
-
 
 #def easy(easyquiz):
 #    print easyquiz
