@@ -4,7 +4,7 @@ allanswers = ["Dunkirk", "Christopher", "British", "beach",
               "German", "musical", "composed", "Zimmer",
               "ticking", "pocket", "IMAX", "quality", "Master", "Hateful"]
 
-blanks = ["__1__", "__2__", "__3__", "__4__", "__5__"]
+blanks1 = ["__1__", "__2__", "__3__", "__4__", "__5__"]
 
 
 quizes = ["The movie __1__ is a war movie directed by __2__ Nolan about the __3__ and French armies stranded on the __4__ of Dunkirk while the __5__ army closed in on them.",
@@ -16,19 +16,42 @@ easyquiz = quizes[0]
 mediumquiz = quizes[1]
 hardquiz = quizes[2]
 
-def playquiz():
-    userinput = raw_input("Please enter a difficulty: easy, medium, or hard")
+print welcomemessage
+
+def blank_in_quiz(blank, blanks):
+    for bl in blanks:
+        if bl in blank:
+            return bl
+    return None
+
+def play_game(ml_string, blanks):
+    replaced = []
+    ml_string = ml_string.split()
+    for blank in ml_string:
+        replacement = blank_in_quiz(blank, blanks)
+        if replacement != None:
+            user_input = raw_input("Type in the answer for blank " + replacement + " ")
+            blank = blank.replace(replacement, user_input)
+            replaced.append(blank)
+        else:
+            replaced.append(blank)
+    replaced = " ".join(replaced)
+    return replaced
+
+
+def difficultyselect():
+    userinput = raw_input("Please enter a difficulty: easy, medium, or hard \n")
     if userinput == "easy":
-        easy()
-    elif user_input == "medium":
-        medium()
-    elif user_input == "hard":
-        hard()
+        print easyquiz
+        play_game(easyquiz, blanks1)
+    if userinput == "medium":
+        print mediumquiz
+        playgame(mediumquiz, blanks1)
+    if userinput == "hard":
+        print hardquiz
+        play_game(hardquiz, blanks1)
     else:
         print "That is not a valid input"
-        playquiz()
+        difficultyselect()
 
-def easy():
-    print easyquiz
-
-playquiz()
+difficultyselect()
