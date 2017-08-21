@@ -1,3 +1,5 @@
+import sys
+
 welcomemessage = "Select a difficulty for the fill-in-the-blank quiz you are about to play!"
 
 allanswers = ["Dunkirk", "Christopher", "British", "beach",
@@ -36,20 +38,26 @@ def play_game(ml_string, blanks):
         else:
             replaced.append(blank)
     replaced = " ".join(replaced)
-    return replaced
+    print replaced
 
 
 def difficultyselect():
-    userinput = raw_input("Please enter a difficulty: easy, medium, or hard \n")
+    userinput = raw_input("Please enter a difficulty: easy, medium, or hard. Type quit to leave: \n")
     if userinput == "easy":
         print easyquiz
         play_game(easyquiz, blanks1)
+        difficultyselect()
     if userinput == "medium":
         print mediumquiz
-        playgame(mediumquiz, blanks1)
+        play_game(mediumquiz, blanks1)
+        difficultyselect()
     if userinput == "hard":
         print hardquiz
         play_game(hardquiz, blanks1)
+        difficultyselect()
+    if userinput == "quit":
+        sys.exit(0)
+
     else:
         print "That is not a valid input"
         difficultyselect()
