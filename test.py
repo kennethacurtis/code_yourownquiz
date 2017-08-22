@@ -19,9 +19,8 @@ easyquiz = quizes[0]
 mediumquiz = quizes[1]
 hardquiz = quizes[2]
 
-selectedLevel = 0
-numberOfQuestions = len(allanswers[selectedLevel])
-currentQuestion = 0
+
+
 
 
 
@@ -34,9 +33,14 @@ def blank_in_quiz(blank, blanks):
     return None
 
 def play_game(ml_string, blanks):
-    currentQuestion = 0
+
+
     replaced = []
     ml_string = ml_string.split()
+    currentQuestion = 0
+    numberOfQuestions = len(allanswers[selectedLevel])
+
+
     for blank in ml_string:
         replacement = blank_in_quiz(blank, blanks)
         if replacement != None:
@@ -57,7 +61,7 @@ def play_game(ml_string, blanks):
 
 
 def difficultyselect():
-    userinput = raw_input("Please enter a difficulty: easy, medium, or hard. Type quit to leave: \n")
+    userinput = raw_input("\nPlease enter a difficulty: easy, medium, or hard. Type quit to leave:\n")
     if userinput == "easy":
         print easyquiz
         selectedLevel = allanswers[0]
