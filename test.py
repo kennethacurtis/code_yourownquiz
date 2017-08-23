@@ -20,7 +20,7 @@ mediumquiz = quizes[1]
 hardquiz = quizes[2]
 
 
-
+selectedLevel = 0
 
 
 
@@ -44,7 +44,7 @@ def play_game(ml_string, blanks):
     for blank in ml_string:
         replacement = blank_in_quiz(blank, blanks)
         if replacement != None:
-            while currentQuestion < numberOfQuestions:
+            if currentQuestion < numberOfQuestions:
                 user_input = raw_input("Type in the answer for blank " + replacement + " ")
                 if user_input == allanswers[selectedLevel][currentQuestion]:
                     blank = blank.replace(replacement, user_input)

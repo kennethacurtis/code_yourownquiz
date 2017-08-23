@@ -45,3 +45,5 @@ def play_game(ml_string, blanks):
     return replaced
 
 print play_game(easydiff, blanks)
+
+#https://discussions.udacity.com/t/cleaning-up-code-function-issue/347116
