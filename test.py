@@ -32,28 +32,27 @@ def blank_in_quiz(blank, blanks):
             return bl
     return None
 
-def play_game(ml_string, blanks):
+def play_game(ml_string, blanks, selectedLevel):
 
 
     replaced = []
     ml_string = ml_string.split()
     currentQuestion = 0
-    numberOfQuestions = len(allanswers[selectedLevel])
 
 
     for blank in ml_string:
-        replacement = blank_in_quiz(blank, blanks)
+        replacement = blank_in_quiz(blank, blanks,)
         if replacement != None:
-            if currentQuestion < numberOfQuestions:
+            user_input = raw_input("Type in the answer for blank " + replacement + " ")
+            while user_input != allanswers[selectedLevel][currentQuestion]:
+                print "Incorrect!"
                 user_input = raw_input("Type in the answer for blank " + replacement + " ")
-                if user_input == allanswers[selectedLevel][currentQuestion]:
-                    blank = blank.replace(replacement, user_input)
-                    replaced.append(blank)
-                    print "\nCorrect!\n"
-                    print " ".join(replaced)
-                    currentQuestion = currentQuestion + 1
-                else:
-                    print "Incorrect!"
+            else:
+                blank = blank.replace(replacement, user_input)
+                replaced.append(blank)
+                print "\nCorrect!\n"
+                print " ".join(replaced)
+                currentQuestion = currentQuestion + 1
         else:
             replaced.append(blank)
     replaced = " ".join(replaced)
@@ -64,18 +63,18 @@ def difficultyselect():
     userinput = raw_input("\nPlease enter a difficulty: easy, medium, or hard. Type quit to leave:\n")
     if userinput == "easy":
         print easyquiz
-        selectedLevel = allanswers[0]
-        play_game(easyquiz, blanks1)
+        selectedLevel = 0
+        play_game(easyquiz, blanks1, selectedLevel)
         difficultyselect()
     if userinput == "medium":
         print mediumquiz
-        selectedLevel = allanswers[1]
-        play_game(mediumquiz, blanks1)
+        selectedLevel = 1
+        play_game(mediumquiz, blanks1, selectedLevel)
         difficultyselect()
     if userinput == "hard":
         print hardquiz
-        selectedLevel = allanswers[2]
-        play_game(hardquiz, blanks1)
+        selectedLevel = 2
+        play_game(hardquiz, blanks1, selectedLevel)
         difficultyselect()
     if userinput == "quit":
         sys.exit(0)
