@@ -52,8 +52,7 @@ def play_game(ml_string, blanks, selectedLevel):
                 blank = blank.replace(replacement, user_input)
                 replaced.append(blank)
                 print "\nCorrect!\n"
-                restofquiz = easyquiz.replace(replacement,user_input)
-                print restofquiz
+                print " ".join(replaced)
                 currentQuestion = currentQuestion + 1
         else:
             replaced.append(blank)
