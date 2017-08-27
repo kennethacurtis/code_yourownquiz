@@ -26,6 +26,7 @@ selectedLevel = 0
 
 print welcomemessage
 
+
 def blank_in_quiz(blank, blanks):
     for bl in blanks:
         if bl in blank:
@@ -43,7 +44,7 @@ def play_game(ml_string, blanks, selectedLevel):
     for blank in ml_string:
         replacement = blank_in_quiz(blank, blanks,)
         if replacement != None:
-            user_input = raw_input("Type in the answer for blank " + replacement + " ")
+            user_input = raw_input("\nType in the answer for blank \n" + replacement + " ")
             while user_input != allanswers[selectedLevel][currentQuestion]:
                 print "Incorrect!"
                 user_input = raw_input("Type in the answer for blank " + replacement + " ")
@@ -51,7 +52,8 @@ def play_game(ml_string, blanks, selectedLevel):
                 blank = blank.replace(replacement, user_input)
                 replaced.append(blank)
                 print "\nCorrect!\n"
-                print " ".join(replaced)
+                restofquiz = easyquiz.replace(replacement,user_input)
+                print restofquiz
                 currentQuestion = currentQuestion + 1
         else:
             replaced.append(blank)
@@ -82,20 +84,5 @@ def difficultyselect():
         print "That is not a valid difficulty"
         difficultyselect()
 
-# Before this point, we have asked the user the level, and we will assign 0 for easy, 1 for medium and 2 for difficult
-#selectedLevel = 1 # This is an example of the above
-
-# This will contain the max number of questions
-# numberOfQuestions = len(allanswers[selectedLevel))
-# currentQuestion = 0
-# while currentQuestion < numberOfQuestions:
-     #Ask the question number __X__
-     #Check the answer against the following place
-     #if USER_ANSWER == allanswers[selectedLevel][currentQuestion]:
-        # Increment currentQuestion
-    #else:
-        #Wrong answer message.
-# https://pastebin.com/3F3utHBq
-# https://pastebin.com/JEzkDLPH
 
 difficultyselect()
