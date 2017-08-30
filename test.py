@@ -1,4 +1,8 @@
+# This is a file I used for testing as it was the first version of my quiz
+# To view the working quiz, open the fillintheblank.py file 
+
 import sys
+
 
 welcomemessage = "Select a difficulty for the fill-in-the-blank quiz you are about to play!"
 
@@ -26,6 +30,11 @@ selectedLevel = 0
 
 print welcomemessage
 
+def restofquiz (answer,quiz,index):
+    blankpos = "__" + str(index + 1) + "__"
+    question = quiz.replace(blankpos,answer)
+    return question
+
 
 def blank_in_quiz(blank, blanks):
     for bl in blanks:
@@ -35,10 +44,11 @@ def blank_in_quiz(blank, blanks):
 
 def play_game(ml_string, blanks, selectedLevel):
 
-
+    index = 0
     replaced = []
     ml_string = ml_string.split()
     currentQuestion = 0
+    answer = allanswers[selectedLevel][currentQuestion]
 
 
     for blank in ml_string:
@@ -52,7 +62,8 @@ def play_game(ml_string, blanks, selectedLevel):
                 blank = blank.replace(replacement, user_input)
                 replaced.append(blank)
                 print "\nCorrect!\n"
-                print " ".join(replaced)
+                quiz = replacement(answer,quiz,index)
+                index += 1
                 currentQuestion = currentQuestion + 1
         else:
             replaced.append(blank)
