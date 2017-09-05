@@ -39,7 +39,10 @@ def grade(user_input, answer):
     else:
         return False
 
-# starts the quiz
+# after user selects difficulty, this function presents the quiz to the user
+# and then asks the questions while the index number is less than the number
+# of blanks. After an answer is given, it checks if the answer is correct and prints
+# the rest of the quiz using the functions grade and restofquiz.
 def start(quiz):
     index = 0
     # number of blanks in each quiz
@@ -58,6 +61,7 @@ def start(quiz):
             print "Correct!"
         else:
             print "Incorrect, try again!"
+    print quiz
 
 print welcomemessage
 difficulty = difficulty()
